@@ -24,6 +24,11 @@ app.get("/",(req,res)=>{
 
 io.on('connection', (socket)=>{
     console.log('user connected')
+
+    //socket anounce in console when recive mess from web
+    socket.on('on-chat', data =>{
+        console.log("message received")
+    })
 })
 
 server.listen(3000, ()=>{
