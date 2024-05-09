@@ -15,8 +15,24 @@
     </body>
     <!-- Use socket.io-->
     <script src="/socket.io/socket.io.js"></script>
-    <!--Call io() func to connect with the server-->
+    
     <script>
+        //Call io() func to connect with the server
         const socket = io()
+
+        //Pass value from the chat form
+        const chatForm = document.querySelector('#chat-form')
+        const chatMes = document.querySelector('#chat-mes')
+
+        chatForm.addEventListener('submit', (e)=>{
+            //Prevent sending blank form as default
+            e.preventDefault()
+
+            
+            const message = chatMes.value
+            socket.emit('on-chat', {
+                message: message
+            })
+        })
     </script>
 </html>
