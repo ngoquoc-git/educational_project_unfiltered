@@ -33,6 +33,19 @@
             socket.emit('on-chat', {
                 message: message
             })
+            //clear socket after hit submit
+            chatMes.value = ''
+        })
+        
+        const messages = document.querySelector('#messages')
+
+        //io.on('user-chat', (message))
+        //create a channel called 'user-chat'
+        socket.on('user-chat', (message)=>{
+            const chatItem = document.createElement('li')
+            chatItem.textContent = message.message;
+
+            messages.appendChild(chatItem)
         })
     </script>
 </html>

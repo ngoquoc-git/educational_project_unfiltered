@@ -27,7 +27,11 @@ io.on('connection', (socket)=>{
 
     //socket anounce in console when recive mess from web
     socket.on('on-chat', data =>{
-        console.log("message received")
+        // console.log("message received: " + data)
+        
+        //emit('user-chat', data)
+        //will send 'data' packets to user-chat channel
+        io.emit('user-chat', data)
     })
 })
 
